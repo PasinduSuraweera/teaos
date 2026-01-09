@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { MuseoModerno } from "next/font/google";
 
 import { Settings, CircleHelp, Search, Database, ClipboardList, File } from "lucide-react";
+
+const museoModerno = MuseoModerno({ subsets: ["latin"] });
 
 import {
   Sidebar,
@@ -68,7 +71,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
               <Link href="/dashboard">
                 <Image src="/icon.png" alt="TeaOS" width={24} height={24} className="shrink-0 rounded-sm" />
-                <span className="text-base font-semibold">{APP_CONFIG.name}</span>
+                <span className={`text-base font-semibold ${museoModerno.className}`}>{APP_CONFIG.name}</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

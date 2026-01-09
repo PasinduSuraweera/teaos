@@ -1,9 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { MuseoModerno } from "next/font/google";
 
 import { Command } from "lucide-react";
 
 import { LoginForm } from "../../_components/login-form";
+
+const museoModerno = MuseoModerno({ subsets: ["latin"], weight: ["700"] });
 
 export default function LoginV1() {
   return (
@@ -24,7 +27,7 @@ export default function LoginV1() {
           <div className="space-y-4 text-center">
             <div className="flex items-center justify-center gap-2 mb-6">
               <Image src="/icon.png" alt="TeaOS" width={40} height={40} className="rounded-md" />
-              <h1 className="text-4xl" style={{ fontFamily: 'Museo Moderno, sans-serif', fontWeight: 700 }}>TEAos.</h1>
+              <h1 className={`text-4xl font-bold ${museoModerno.className}`}>TEAos.</h1>
             </div>
             <div className="font-medium tracking-tight">Login</div>
             <div className="text-muted-foreground mx-auto max-w-xl">
