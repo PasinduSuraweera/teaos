@@ -85,7 +85,7 @@ export function OrgSwitcher() {
                 </AvatarFallback>
               </Avatar>
               <div className="flex flex-col gap-0.5 leading-none">
-                <span className="font-semibold truncate max-w-[140px]">
+                <span className="truncate max-w-[140px]">
                   {currentOrganization.organization_name}
                 </span>
                 <span className="text-muted-foreground text-xs capitalize">
