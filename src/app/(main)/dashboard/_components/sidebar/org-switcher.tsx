@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Building2, Check, ChevronsUpDown, Plus, Settings } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { MuseoModerno } from "next/font/google"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import {
@@ -21,6 +22,8 @@ import {
 import { Skeleton } from "@/components/ui/skeleton"
 import { useOrganization } from "@/contexts/organization-context"
 import { getInitials } from "@/lib/utils"
+
+const museoModerno = MuseoModerno({ subsets: ["latin"] })
 
 export function OrgSwitcher() {
   const router = useRouter()
@@ -60,7 +63,7 @@ export function OrgSwitcher() {
             <div className="bg-primary/10 text-primary flex size-8 items-center justify-center rounded-lg">
               <Plus className="size-4" />
             </div>
-            <div className="flex flex-col gap-0.5 leading-none">
+            <div className={`flex flex-col gap-0.5 leading-none ${museoModerno.className}`}>
               <span className="font-semibold">Create Organization</span>
               <span className="text-muted-foreground text-xs">Get started</span>
             </div>
@@ -79,12 +82,12 @@ export function OrgSwitcher() {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="size-8 rounded-lg">
-                <AvatarFallback className="rounded-lg bg-primary/10 text-primary">
+              <Avatar className="size-8 rounded-lg text-xs">
+                <AvatarFallback className={`rounded-lg bg-primary/10 text-primary ${museoModerno.className}`}>
                   {getInitials(currentOrganization.organization_name)}
                 </AvatarFallback>
               </Avatar>
-              <div className="flex flex-col gap-0.5 leading-none">
+              <div className={`flex flex-col gap-0.5 leading-none ${museoModerno.className}`}>
                 <span className="truncate max-w-[140px]">
                   {currentOrganization.organization_name}
                 </span>
@@ -114,11 +117,11 @@ export function OrgSwitcher() {
                 className="gap-2 p-2"
               >
                 <Avatar className="size-6 rounded-md">
-                  <AvatarFallback className="rounded-md text-xs">
+                  <AvatarFallback className={`rounded-md text-[10px] ${museoModerno.className}`}>
                     {getInitials(org.organization_name)}
                   </AvatarFallback>
                 </Avatar>
-                <span className="flex-1 truncate">{org.organization_name}</span>
+                <span className={`flex-1 truncate ${museoModerno.className}`}>{org.organization_name}</span>
                 {org.organization_id === currentOrganization.organization_id && (
                   <Check className="size-4" />
                 )}
