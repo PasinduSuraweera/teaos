@@ -17,6 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { APP_CONFIG } from "@/config/app-config";
 import { sidebarItems } from "@/navigation/sidebar/sidebar-items";
@@ -63,15 +64,20 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
-              <Link href="/dashboard">
-                <Image src="/icon.png" alt="TeaOS" width={24} height={24} className="shrink-0 rounded-sm" />
-                <span className={`text-base font-semibold ${museoModerno.className}`}>{APP_CONFIG.name}</span>
+              <Link href="/dashboard" className="flex items-center gap-2">
+                <Image src="/avatars/TEAos..png" alt="TEAos" width={32} height={32} className="rounded-sm" />
+                {!isCollapsed && (
+                  <span className={`text-lg font-semibold ${museoModerno.className}`}>{APP_CONFIG.name}</span>
+                )}
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
